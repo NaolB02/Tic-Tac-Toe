@@ -1,5 +1,12 @@
 let turn = "X";
 let boxes = ['', '', '', '', '', '', '', '', ''];
+let gameStatus = true;
+let playerX = 0;
+let playerO = 0;
+let draw = 0;
+document.getElementById("playerX").innerHTML = playerX;
+document.getElementById("draw").innerHTML = draw;
+document.getElementById("playerO").innerHTML = playerO;
 const winningCombs = [
     [0, 1, 2],
     [0, 3, 6],
@@ -11,6 +18,7 @@ const winningCombs = [
     [6, 7, 8]
 ];
 
+//checks if a cell is occupied
 function isNotOccupied(index) {
     if (boxes[index] != '') {
         return false
@@ -18,9 +26,43 @@ function isNotOccupied(index) {
     return true
 }
 
+//checks if every cell is occupied
+function isFullyOccupied() {
+    for (let i = 0; i < 9; i++) {
+        if (boxes[i] == '') {
+            return false
+        }
+    }
+    return true
+}
+
+//adds event listener to each cell
+function addHandler(j) {
+    for (let i = 0; i < j; i++) {
+        document.getElementById("box" + i).addEventListener("click", () => {
+            play(indexId(i)[0], indexId(i)[1]);
+        });
+    }
+}
+
+
+// restarts a finished game
+function playAgain() {
+    boxes = ['', '', '', '', '', '', '', '', ''];
+    gameStatus = true;
+    document.getElementById("winnerDisplay").innerHTML = turn + "'s turn"
+    for (let i = 0; i < 9; i++) {
+        reverseChangeVisibility("x--" + i);
+        reverseChangeVisibility("o--" + i);
+    }
+
+}
+
+//views whose turn it is
 function turnViewer() {
     document.getElementById("currentPlayer").innerHTML = turn;
 }
+
 
 function similarityCheck(arr) {
     if ((boxes[arr[0]] == boxes[arr[1]]) && (boxes[arr[1]] == boxes[arr[2]]) && (boxes[arr[0]] != '')) {
@@ -32,19 +74,43 @@ function similarityCheck(arr) {
 function gameOver() {
     for (let i = 0; i < 8; i++) {
         if (similarityCheck(winningCombs[i])) {
-            return true
+            gameStatus = false;
         }
     }
-    return false
+
+    if (!(gameStatus)) {
+        if (turn == "X") {
+            playerO += 1
+            document.getElementById("playerO").innerHTML = playerO;
+            document.getElementById("winnerDisplay").innerHTML = "Congrats, O has won!!";
+        } else {
+            playerX += 1
+            document.getElementById("playerX").innerHTML = playerX;
+            document.getElementById("winnerDisplay").innerHTML = "Congrats, X has won!!";
+        }
+
+    } else if (isFullyOccupied()) {
+        draw += 1
+        document.getElementById("draw").innerHTML = draw
+        document.getElementById("winnerDisplay").innerHTML = "Draw Game."
+
+    } else {
+        turnViewer();
+    }
+
 }
 
 function changeVisibility(id) {
     document.getElementById(id).style.visibility = "visible";
 }
 
+function reverseChangeVisibility(id) {
+    document.getElementById(id).style.visibility = "hidden";
+}
+
 
 function play(index, id) {
-    if (isNotOccupied(index)) {
+    if (isNotOccupied(index) && gameStatus) {
 
         changeVisibility(id);
         boxes[index] = turn;
@@ -55,119 +121,28 @@ function play(index, id) {
             turn = "X";
         }
 
-        if (gameOver()) {
-            if (turn == "X") {
-                document.getElementById("winnerDisplay").innerHTML = "Congrats, O has won";
-            } else {
-                document.getElementById("winnerDisplay").innerHTML = "Congrats, X has won";
-            }
-        } else {
-            turnViewer();
-        }
+        gameOver();
     }
 }
 
-//event listeners
-document.getElementById("box0").addEventListener("click", () => {
-    let index = 0;
+function indexId(num) {
+    let index = num;
     let id = '';
     if (turn == "X") {
-        id = "x--0";
+        id = "x--" + index;
     } else {
-        id = "o--0";
+        id = "o--" + index;
     }
-    play(index, id);
-})
 
-document.getElementById("box1").addEventListener("click", () => {
-    let index = 1;
-    let id = '';
-    if (turn == "X") {
-        id = "x--1";
-    } else {
-        id = "o--1";
-    }
-    play(index, id);
-})
+    return [index, id]
+}
 
-document.getElementById("box2").addEventListener("click", () => {
-    let index = 2;
-    let id = '';
-    if (turn == "X") {
-        id = "x--2";
-    } else {
-        id = "o--2";
-    }
-    play(index, id);
-})
-
-document.getElementById("box3").addEventListener("click", () => {
-    let index = 3;
-    let id = '';
-    if (turn == "X") {
-        id = "x--3";
-    } else {
-        id = "o--3";
-    }
-    play(index, id);
-})
-
-document.getElementById("box4").addEventListener("click", () => {
-    let index = 4;
-    let id = '';
-    if (turn == "X") {
-        id = "x--4";
-    } else {
-        id = "o--4";
-    }
-    play(index, id);
-})
-
-document.getElementById("box5").addEventListener("click", () => {
-    let index = 5;
-    let id = '';
-    if (turn == "X") {
-        id = "x--5";
-    } else {
-        id = "o--5";
-    }
-    play(index, id);
-})
-
-document.getElementById("box6").addEventListener("click", () => {
-    let index = 6;
-    let id = '';
-    if (turn == "X") {
-        id = "x--6";
-    } else {
-        id = "o--6";
-    }
-    play(index, id);
-})
-
-document.getElementById("box7").addEventListener("click", () => {
-    let index = 7;
-    let id = '';
-    if (turn == "X") {
-        id = "x--7";
-    } else {
-        id = "o--7";
-    }
-    play(index, id);
-})
-
-document.getElementById("box8").addEventListener("click", () => {
-    let index = 8;
-    let id = '';
-    if (turn == "X") {
-        id = "x--8";
-    } else {
-        id = "o--8";
-    }
-    play(index, id);
-    console.log(boxes);
-})
+addHandler(9);
 
 document.getElementById("reset").addEventListener("click", () => {
     location.reload();
+})
+
+document.getElementById("playagain").addEventListener("click", () => {
+    playAgain();
 })

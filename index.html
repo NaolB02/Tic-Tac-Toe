@@ -12,10 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
     <div class="wrapper">
         <p id="winnerDisplay"><span class="currentPlayer" id="currentPlayer">X</span>'s turn</p>
         <button class="resetbutton" id="reset">Reset</button>
+        <button class="playagain" id="playagain">Play Again</button>
     </div>
     <div class="box">
         <div class="box__row box__row--1" id="box0">
@@ -101,19 +102,16 @@
     </div>
 
     <div class="scoreboard">
-        <div class="player1">
-            <p class="player1__score"></p>
-            <p>Player1 (<span class="player1__type"></span>)</p>
+        <div class="playerX">
+            <p>X (<span id="playerX"></span>)</p>
         </div>
 
         <div class="draw">
-            <p class="draw__score"></p>
-            <p>Draw</p>
+            <p>Draw(<span id="draw"></span>)</p>
         </div>
 
-        <div class="player2">
-            <p class="player2__score"></p>
-            <p>Player2 (<span class="player2__type"></span>)</p>
+        <div class="playerO">
+            <p>O (<span id="playerO"></span>)</p>
 
         </div>
     </div>

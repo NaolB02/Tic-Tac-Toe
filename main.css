@@ -11,7 +11,16 @@ body {
 }
 
 .resetbutton {
-    width: 15em;
+    width: 7em;
+    background-color: rgb(237, 172, 87);
+    padding: 1em;
+    font-weight: bold;
+    border-radius: 4px;
+    color: black;
+}
+
+.playagain {
+    width: 7em;
     background-color: rgb(237, 172, 87);
     padding: 1em;
     font-weight: bold;
@@ -58,8 +67,8 @@ body {
 }
 
 .box {
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     margin: auto;
     margin-top: 5vh;
     display: grid;
@@ -110,7 +119,47 @@ body {
 
 @media only screen and (max-width: 640px) {
     .box {
-        width: 330px;
-        height: 330px;
+        width: 300px;
+        height: 300px;
+    }
+    .o {
+        border: 0.25em white solid;
+        border-radius: 100%;
+        margin-top: 1em;
+        margin-left: 1em;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        visibility: hidden;
+    }
+    .x {
+        position: absolute;
+        margin-top: 1em;
+        margin-left: 2em;
+        visibility: hidden;
+    }
+    .x__back {
+        display: inline-block;
+        position: absolute;
+        border: 0.25em white solid;
+        height: 60px;
+        width: 5px;
+        background-color: white;
+        transform: rotate(135deg);
+    }
+    .x__front {
+        display: inline-block;
+        position: absolute;
+        border: 0.25em white solid;
+        height: 60px;
+        width: 5px;
+        background-color: white;
+        transform: rotate(45deg);
+    }
+    .wrapper {
+        width: 50%;
+        margin: auto;
+        font-family: "Ubuntu", sans-serif;
+        padding-left: 20%;
     }
 }
