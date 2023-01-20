@@ -60,7 +60,7 @@ function playAgain() {
 
 //views whose turn it is
 function turnViewer() {
-    document.getElementById("currentPlayer").innerHTML = turn;
+    document.getElementById("winnerDisplay").innerHTML = turn + "'s turn";
 }
 
 
@@ -80,19 +80,19 @@ function gameOver() {
 
     if (!(gameStatus)) {
         if (turn == "X") {
-            playerO += 1
+            playerO += 1;
             document.getElementById("playerO").innerHTML = playerO;
             document.getElementById("winnerDisplay").innerHTML = "Congrats, O has won!!";
         } else {
-            playerX += 1
+            playerX += 1;
             document.getElementById("playerX").innerHTML = playerX;
             document.getElementById("winnerDisplay").innerHTML = "Congrats, X has won!!";
         }
 
     } else if (isFullyOccupied()) {
-        draw += 1
-        document.getElementById("draw").innerHTML = draw
-        document.getElementById("winnerDisplay").innerHTML = "Draw Game."
+        draw += 1;
+        document.getElementById("draw").innerHTML = draw;
+        document.getElementById("winnerDisplay").innerHTML = "Draw Game.";
 
     } else {
         turnViewer();
