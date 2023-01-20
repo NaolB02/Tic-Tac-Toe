@@ -4,14 +4,18 @@ body {
 }
 
 .wrapper {
-    width: 50%;
+    width: 500px;
     margin: auto;
     font-family: "Ubuntu", sans-serif;
-    padding-left: 25%;
+    padding-left: 12%;
+}
+
+#winnerDisplay {
+    margin-left: 6em;
 }
 
 .resetbutton {
-    width: 7em;
+    width: 12em;
     background-color: rgb(237, 172, 87);
     padding: 1em;
     font-weight: bold;
@@ -20,7 +24,7 @@ body {
 }
 
 .playagain {
-    width: 7em;
+    width: 12em;
     background-color: rgb(237, 172, 87);
     padding: 1em;
     font-weight: bold;
@@ -29,10 +33,10 @@ body {
 }
 
 .o {
-    border: 0.5em white solid;
+    border: 0.8em white solid;
     border-radius: 100%;
-    margin-top: 2em;
-    margin-left: 2em;
+    margin-top: 1em;
+    margin-left: 1em;
     position: absolute;
     width: 100px;
     height: 100px;
@@ -41,7 +45,7 @@ body {
 
 .x {
     position: absolute;
-    margin-top: 2em;
+    margin-top: 1.3em;
     margin-left: 4em;
     visibility: hidden;
 }
@@ -106,15 +110,16 @@ body {
 .scoreboard {
     display: grid;
     grid-template-columns: repeat(3, 33.33%);
-    width: 50%;
+    width: 500px;
     margin: auto;
     margin-top: 4em;
+    padding-left: 8%;
 }
 
 .scoreboard p,
 .scoreboard span {
     font-size: 1em;
-    font-family: "Ubuntu", sans-serif;
+    font-family: sans-serif;
 }
 
 @media only screen and (max-width: 640px) {
@@ -123,10 +128,10 @@ body {
         height: 300px;
     }
     .o {
-        border: 0.25em white solid;
+        border: 0.5em white solid;
         border-radius: 100%;
         margin-top: 1em;
-        margin-left: 1em;
+        margin-left: 0.8em;
         position: absolute;
         width: 50px;
         height: 50px;
@@ -135,7 +140,7 @@ body {
     .x {
         position: absolute;
         margin-top: 1em;
-        margin-left: 2em;
+        margin-left: 2.3em;
         visibility: hidden;
     }
     .x__back {
@@ -161,5 +166,8 @@ body {
         margin: auto;
         font-family: "Ubuntu", sans-serif;
         padding-left: 20%;
+    }
+    #winnerDisplay {
+        margin-left: 0;
     }
 }
