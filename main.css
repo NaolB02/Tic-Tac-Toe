@@ -7,7 +7,7 @@ body {
     width: 500px;
     margin: auto;
     font-family: "Ubuntu", sans-serif;
-    padding-left: 12%;
+    padding-left: 190px;
 }
 
 #winnerDisplay {
@@ -113,7 +113,7 @@ body {
     width: 500px;
     margin: auto;
     margin-top: 4em;
-    padding-left: 8%;
+    padding-left: 120px;
 }
 
 .scoreboard p,
@@ -162,12 +162,18 @@ body {
         transform: rotate(45deg);
     }
     .wrapper {
-        width: 50%;
+        width: 280px;
         margin: auto;
         font-family: "Ubuntu", sans-serif;
-        padding-left: 20%;
+        padding-left: 120px;
     }
     #winnerDisplay {
-        margin-left: 0;
+        margin-left: 3em;
+    }
+    .scoreboard {
+        width: 280px;
+        margin: auto;
+        margin-top: 4em;
+        padding-left: 8%;
     }
 }
